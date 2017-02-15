@@ -1,5 +1,5 @@
 -- 4
-select DISTINCT c.first_name, c.last_name from customer c, product_order p where c.customer_id = p.customer_id;
+select DISTINCT c.first_name, c.last_name from customer c where c.customer_id IN (select customer_id from product_order);
 
 -- 5
 select DISTINCT c.first_name, c.last_name from customer c right join product_order p on c.customer_id = p.customer_id;
