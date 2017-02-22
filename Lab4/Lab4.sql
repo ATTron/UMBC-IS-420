@@ -21,7 +21,8 @@ declare
 currseq number;
 nextseq number;
 begin
-currseq := myseq.currval;
+--currseq := myseq.currval;
+select myseq.nextval into currseq from dual;
 nextseq := myseq.nextval;
 dbms_output.put_line(currseq);
 dbms_output.put_line(nextseq);
