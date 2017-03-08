@@ -10,6 +10,8 @@ begin
   dbms_output.put_line('City: ' ||club_city);
 end;
 
+Execute PRINTCLUBNAME(130);
+
 -- 2
 set serveroutput on;
 create or replace function ProdCheck(prod_in in number)
