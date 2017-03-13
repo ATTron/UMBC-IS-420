@@ -50,7 +50,7 @@ begin
   exit when pro_cur%notfound;
   if pro_row.price  < 5 then
     price_status := 'low';
-  elsif pro_row.price > 5 AND pro_row.price < 20 then
+  elsif pro_row.price >= 5 AND pro_row.price =< 20 then
     price_status := 'medium';
   else
     price_status := 'high';
