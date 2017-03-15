@@ -51,7 +51,7 @@ begin
   select product_name into prod_name from product where product_id = prod_in;
   select p.product_name, s.name into prod_name, supp_name 
   from product p, supplier s
-  where s.supplier_id = supp_in AND p.product_id = prod_in AND s.supplier_id = p.supplier_id;
+  where s.supplier_id = supp_in AND p.product_id = prod_in;
   dbms_output.put_line('Product Name: ' ||prod_name);
   dbms_output.put_line('Supplier Name: ' ||supp_name);
   Exception
