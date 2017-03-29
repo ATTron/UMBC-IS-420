@@ -80,11 +80,7 @@ begin
 end;
 
 execute EX3B_NEW_ORDER(150,10010,15,'CC');
-
 execute EX3B_NEW_ORDER(105,100100,15,'CC');
-
 execute EX3B_NEW_ORDER(105,10010,15,'KK');
-
 execute EX3B_NEW_ORDER(105,10010,50,'CC');
-
 execute EX3B_NEW_ORDER(105,10010,15,'CC');
