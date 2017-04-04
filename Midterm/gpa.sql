@@ -8,7 +8,7 @@ create table student(
 insert into student values(1234, 5678, 5);
 insert into student values(1234, 5674, 2);
 insert into student values(1234, 5578, 1);
-insert into student values(1234, 5678, 4);
+insert into student values(1234, 5638, 4);
 
 create or replace function change_student_grade(stu_in in number, cour_in in number, grade_in in number)
   return number is
