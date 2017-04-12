@@ -12,21 +12,21 @@
 		<hr />
 		<form>
 			<table border=1>
-				<tr><td>Product Name:</td> <td><input type = "text"/></td></tr> <br/>
-				<tr><td>Quantity in Stock:</td> <td><input type = "text"/></td></tr><br/>
-				<tr><td>Reorder Point:</td> <td><input type = "text"/></td></tr> <br/>
-				<tr><td>Price:</td> <td><input type = "text"/></td></tr> <br/>
-				<tr><td>Supplier Id:</td> <td><input type = "text"/></td></tr> <br/>
-				<tr><td>Reorder Qty:</td> <td><input type = "text"/></td></tr> <br/>
+				<tr><td>Product Name:</td> <td><input type = "text" name="p_name"/></td></tr> <br/>
+				<tr><td>Quantity in Stock:</td> <td><input type = "text"name="qIs"/></td></tr><br/>
+				<tr><td>Reorder Point:</td> <td><input type = "text"name="reorderPt"/></td></tr> <br/>
+				<tr><td>Price:</td> <td><input type = "text"name="pPrice"/></td></tr> <br/>
+				<tr><td>Supplier Id:</td> <td><input type = "text"name="suppId"/></td></tr> <br/>
+				<tr><td>Reorder Qty:</td> <td><input type = "text"name="reorderQt"/></td></tr> <br/>
 				<tr><td>Manufacturer:</td> <td><input type = "radio" name = "domestic"/>Domestic <input type = "radio" name = "international"/> International</td></tr> <br/>
-				<tr><td>Shipping Method</td><td><select>
-					<option>Pickup</option>
-					<option>First Class</option>
-					<option>Two Days</option>
-					<option>Overnight</option>
+				<tr><td>Shipping Method</td><td><select name="shippMeth">
+					<option value="pickup">Pickup</option>
+					<option value="first_class">First Class</option>
+					<option value="twoDay">Two Days</option>
+					<option value="overnight">Overnight</option>
 				</select></td></tr>
 			</table>
-			<input type = "submit" value = "Submit">
+			<input type = "submit" value = "Submit" name="submit">
 		</form>
 	</body>
 </html>

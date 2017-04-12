@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<%@page language="PL/SQL"%>
+<%@plsql procedure="create_product"%>
+<%@plsql parameter="prod_name_text" default="null"%>
+<%@plsql parameter="qis_text" default="null"%>
+<%@plsql parameter="rp_text" default="null"%>
+<%@plsql parameter="price_text" default="null"%>
+<%@plsql parameter="supp_text" default="null"%>
+<%@plsql parameter="rq_text" default="null"%>
+<%@plsql parameter="formsbutton1" default="null"%>
+
+<head>
+<title>Create Product</title>
+</head>
+<body>
+<div align="center"><p><h2>Outdoor Products</h2>
+<!-- Navigation Bar Links -->
+<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.input_product">Input Product</a><br>
+<hr /></div>
+<% insert into product values (10026, prod_name_text, qis_text, rp_text, price_text, supp_text, rq_text);
+commit; %>
+<p>New Product <%=prod_name_text %> is created successfully, Product ID is <%= 10026%></p>
+<% exception when others then %>
+<%= sqlerrm %>
+<!-- End Page Content -->
+</body>
+</html>
