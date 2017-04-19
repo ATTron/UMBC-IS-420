@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<%@page language="PL/SQL" %>
+<%@plsql procedure="Ex5a7a" %>
+<%!cursor mou_cr is select count(*), name from sporting_clubs group by name; %>
+<%!cursor mou_only is select count(*), name from sporting_clubs group by name HAVING name LIKE '%Mountain%';%>
+<%!mou_only_row mou_only%rowtype;%>
+<%!mou_row mou_cr%rowtype; %>
+<%!mou_count number; %>
+<html>
+	<head>
+		<title>Join Club</title>
+	</head>
+
+	<body>
+		<% mou_count := 0 ; %>
+		<% for mou_row in mou_cr loop %>
+			<% mou_count := mou_count + 1; %>
+		<% end loop; %>
+		
+		<div>
+		<div>
+			<p>We offer membership to many existing sporting clubs. Currently there are <%= mou_count %> sporting clubs attached to this site.<br/><br/>
+			The fee for membership is $50 per month. The listed sporting clubs are :</p>
+			<ul>
+				<% for mou_row in mou_cr loop %>
+				<li><%= mou_row.name %></li>
+				<% end loop; %>
+			</ul>
+			<p>List of mountain only clubs</p>
+			<ul>
+				<% for mou_only_row in mou_only loop %>
+					<li><%= mou_only_row.name%></li>
+				<% end loop; %>
+			</ul>
+			<p>We welcome new membership. Use the Apply button to join any club.</p>
+			<input type ="button" value="apply" name="Apply"/>
+		<div>
+		<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.hw4_home_page">Home</a>
+		<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.Ex5a7b">Buy Supplies</a>
+		</div>
+	</body>
+</html>

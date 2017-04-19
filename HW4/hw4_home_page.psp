@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<%@page language="PL/SQL"%>
+<%@plsql procedure="hw4_home_page"%>
+<html>
+	<head>
+		<title>Outdoor Activites</title>
+	</head>
+	<body>
+		<div align="right">
+			<img src="https://img.clipartfest.com/1a63e8d460142e03e843c2b88977a6f6_outdoor-clipart-1-outdoor-clipart_410-297.png" style="max-width:100px;"/>
+		</div>
+		<div align="center">
+			<h1>Outdoor Activites Home Page</h1>
+		</div>
+		<div align="center">
+				<p>Outdoor activites can range from simple hiking to moutain climbing.<br/>
+				Such activites require different equipments and supplies to enhance their enjoyment.</p>
+			<p>We thank you for your visit. Please use the link buttons on the side to explore the site.</p>
+		</div>
+		<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.Ex5a7a">Join Club</a>
+		<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.Ex5a7b">Buy Supplies</a>
+	</body>
+
+</html>

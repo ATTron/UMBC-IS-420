@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<%@page language="PL/SQL"%>
+<%@plsql procedure="Ex5a7b"%>
+<%!cursor supp_cr is select product_name from product; %>
+<%!supp_row supp_cr%rowtype; %>
+<%!low number; %>
+<%!high number; %>
+<html>
+	<head>
+		<title>Buy Supplies</title>
+	</head>
+
+	<body>
+		<% select max(price) into high from product; %>;
+		<% select min(price) into low from product; %>;
+		<div align="center">
+		<h1>Order Supplies</h1>
+		<p>There are many outdoor supplies available. Prices for these supplies range from <%=low%> to <%=high%></p>
+		<p>The list of supplies are: </p>
+		<ul style="width:15%; margin:auto;">
+			<% for supp_row in supp_cr loop %>
+				<li><%= supp_row.product_name %></li>
+			<% end loop; %>
+		</ul>
+		</div>
+		<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.Ex5a7a">Join Club</a>
+		<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.hw4_home_page">Home</a>
+	</body>
+</html>
