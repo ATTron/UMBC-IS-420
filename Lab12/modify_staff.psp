@@ -1,0 +1,41 @@
+<%@page language="PL/SQL"%>
+<%@plsql procedure="modify_staff"%>
+<%@plsql parameter="s_name_text" default="null"%>
+<%@plsql parameter="formsbutton1" default="null"%>
+<%! cursor staff_cursor is
+select first_name, last_name, position, status, salary
+from staff
+where concat(first_name, concat(' ', last_name)) = s_name_text;
+staff_row staff_cursor%rowtype; %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Modify Staff</title>
+</head>
+<body>
+<div align="center"><p><h1>Staff Update</h1></p>
+<!-- Navigation Bar Links -->
+<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.get_staff">Get Product</a> <br>
+<hr /></div>
+<br> <!-- Start Page Content -->
+<form action="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.complete_staff_change" method="post">
+<!-- Text Box -->
+<% open staff_cursor;
+fetch staff_cursor into staff_row; %>
+<input type="hidden" name="hidden_staff_name" value="<%=s_name_text%>" />
+First Name: <input type="text" name="s_firstname_text" value="<%=staff_row.first_name%>" /><%= staff_row.first_name %> <br /><br />
+Last Name: <input type="text" name="s_lastname_text" value="<%=staff_row.last_name%>" /><%= staff_row.last_name %> <br /><br />
+<!-- Set of two radio buttons -->
+Position: <input type="radio" name="po_text" value="Assistant" <% if staff_row.position = 'Assistant' then %> checked <% end if; %>/> Assistant
+<input type="radio" name="po_text" value="Manager" <% if staff_row.position = 'Manager' then %> checked <% end if; %>/> Manager
+<input type="radio" name="po_text" value="Supervisor" <% if staff_row.position = 'Supervisor' then %> checked <% end if; %>/> Supervisor <br /><br />
+Status: <input type="radio" name="stat_text" value="T" <% if staff_row.status = 'T' then %> checked <% end if; %>/> Temporary
+<input type="radio" name="stat_text" value="P" <% if staff_row.status = 'P' then %> checked <% end if; %>/> Permanent <br /><br />
+Salary: <input type="text" name="salary_text" value="<%=staff_row.salary%>" /> <br /><br />
+<% close staff_cursor; %>
+<!-- Set of Submit and Reset buttons --> 
+<input type="submit" name="formsbutton1" value="Modify"/>
+</form>
+<!-- End Page Content -->
+</body>
+</html>
