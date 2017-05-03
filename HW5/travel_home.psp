@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<%@page language="PL/SQL" %>
+<%@plsql procedure="travel_home" %>
+<%!cursor flightO_cr is select distinct org_city from flight; %>
+<%!cursor flightD_cr is select distinct dest_city from flight; %>
+<%!flightO_row flightO_cr%rowtype; %>
+<%!flightD_row flightD_cr%rowtype; %>
+<html>
+	<head>
+		<title>Search Flight</title>
+	</head>
+
+	<body>
+		<div align="center">
+			<h1>Travel Anywhere</h1>
+			<br><br>
+			<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.travel_home">Home</a>
+		</div>
+		<hr>
+		
+		<div align="center">
+			<p><strong>Search Flights</strong></p>
+			<form action="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.ex6a6_search_results" method="post">
+				Origin City: <select name="o_city">
+					<% for flightO_row in flightO_cr loop%>
+						<option value="<%= flightO_row.org_city %>"><%= flightO_row.org_city %></option>
+					<% end loop; %>
+				</select>
+				<br>
+				Destination City: <select name="d_city">
+					<% for flightD_row in flightD_cr loop%>
+						<option value="<%= flightD_row.dest_city %>"><%= flightD_row.dest_city %></option>
+					<% end loop; %>
+				</select>
+				<br>
+				<input type="submit" value="Search" name="FormsButton1">
+			</form>
+		</div>
+	</body>
+</html>

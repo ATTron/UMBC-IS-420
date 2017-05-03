@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<%@page language="PL/SQL" %>
+<%@plsql procedure="hotel_results" %>
+<%@plsql parameter="h_name" default="null" %>
+<%@plsql parameter="a_date" default="null" %>
+<%@plsql parameter="d_date" default="null" %>
+<%@plsql parameter="num_a" default="null" %>
+<%@plsql parameter="num_k" default="null" %>
+<%@plsql parameter="b_crib" default="null" %>
+<%@plsql parameter="cus_id" default="null" %>
+<%@plsql parameter="FormsButton1" default="null" %>
+
+<%!customer_name travel_customer.first_name%type; %>
+<html>
+	<head>
+		<title>Hotel Receipt</title>
+	</head>
+
+	<body>
+		<div align="center">
+			<h1>Travel Anywhere</h1>
+			<br><br>
+			<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.hotel_home">Home</a>
+		</div>
+		<hr>
+		<% select concat(first_name, concat(' ', last_name)) as name into customer_name from travel_customer where customer_id = cus_id; %>
+		<div align="center">
+			<p><strong>Hotel Reservation Receipt</strong></p>
+			<table>
+				<tr><td>Reservation Number:</td> <td><%=hotel_reserve_sequence.nextval %><td></tr>
+				<tr><td>Customer Name:</td> <td><%= customer_name %></td></tr>
+				<tr><td>Reservation Date:</td> <td><%= d_date %></td></tr>
+				<tr><td>Hotel Name:</td> <td><%= h_name %></td></tr>
+				<tr><td>Arrival Date:</td> <td><%= a_date %></td></tr>
+				<tr><td>Departure Date:</td> <td><%= d_date %></td></tr>
+				<tr><td>Number of Adults:</td> <td><%= num_a %></td></tr>
+			</table>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<%@page language="PL/SQL" %>
+<%@plsql procedure="ex6a6_search_results" %>
+<%@plsql parameter="o_city" default="null"%>
+<%@plsql parameter="d_city" default="null"%>
+<%@plsql parameter="FormsButton1" %>
+<%!cursor flight_cr is select name, flight_no, org_city, dest_city from flight where org_city = o_city and dest_city = d_city; %>
+<%!flight_row flight_cr%rowtype; %>
+<%!o_test flight.org_city%type; %>
+<%!bad_input exception; %>
+<html>
+	<head>
+		<title>Search Flight</title>
+	</head>
+
+	<body>
+		<div align="center">
+			<h1>Travel Anywhere</h1>
+			<br><br>
+			<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.travel_home">Home</a>
+		</div>
+		<hr>
+		
+		<div align="center">
+		<% select org_city into o_test from flight where org_city = o_city and dest_city = d_city; %>
+			<p><strong>Travel Itinerary</strong></p>
+			<table cellspacing="5">
+				<tr><th>Airline</th><th>Flight Number</th><th>Origin City</th><th>Destination City</th></tr>
+				<% open flight_cr; %>
+				<% loop %>
+				<% fetch flight_cr into flight_row; %>
+				<% exit when flight_cr%notfound; %>
+				<% if flight_row.name IS NOT NULL then %>
+					<tr>
+						<td><%=flight_row.name %></td>
+						<td><%=flight_row.flight_no %></td>
+						<td><%=flight_row.org_city %></td>
+						<td><%=flight_row.dest_city %></td>
+					</tr>
+				<% else %>
+					<% raise bad_input; %>
+				<% end if; %>
+				<% end loop; %>
+				<% close flight_cr; %>
+			</table>
+		</div>
+		<% exception when no_data_found then %>
+		<p>There are no flight connections between the <%= o_city %> and <%= d_city %></p>
+		<% when bad_input then%>
+		<p>There are no flight connections between the <%= o_city %> and <%= d_city %></p>
+	</body>
+</html>

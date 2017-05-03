@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<%@page language="PL/SQL" %>
+<%@plsql procedure="hotel_home" %>
+<%!cursor hotel_cr is select distinct hotel_name from hotel; %>
+<%!hotel_row hotel_cr%rowtype; %>
+<html>
+	<head>
+		<title>Hotel Reservation</title>
+	</head>
+
+	<body>
+		<div align="center">
+			<h1>Travel Anywhere</h1>
+			<br><br>
+			<a href="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.hotel_home">Home</a>
+		</div>
+		<hr>
+		
+		<div align="center">
+			<p><strong>Hotel Reservation</strong></p>
+			<form action="http://oracle.is.umbc.edu:8080/classpsp/IS420_SG77379.hotel_results" method="post">
+				Hotel Name: <select name="h_name">
+					<% for hotel_row in hotel_cr loop%>
+						<option value="<%= hotel_row.hotel_name %>"><%= hotel_row.hotel_name %></option>
+					<% end loop; %>
+				</select>
+				<br>
+				Arrival Date: <input type="text" name="a_date" />(use mm/dd/yy format)
+				<br>
+				Departure Date: <input type="text" name="d_date" /> (use mm/dd/yy format)
+				<br>
+				Number of Adults: <select name="num_a">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+				<br>
+				Number of Kids: <input type="text" name="num_k" />
+				<br>
+				Baby Crib: <input type="radio" name="b_crib" value="Yes"/>Yes <input type="radio" name="b_crib" value="No" />No
+				<br>
+				Customer ID: <input type="text" name="cus_id" />
+				<br>
+				<input type="submit" value="Make Reservation" name="FormsButton1">
+			</form>
+		</div>
+	</body>
+</html>
